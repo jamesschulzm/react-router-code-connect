@@ -13,8 +13,8 @@ createRoot(document.getElementById("root")).render(
       {/* Define as rotas da aplicação */}
       <Routes>
         <Route path="/auth">
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+          <Route path="login" element={<Login />} />
         </Route>
 
         <Route path="/">
