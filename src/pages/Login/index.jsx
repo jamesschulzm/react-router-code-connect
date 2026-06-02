@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router";
 import { AuthFormContainer } from "../../components/AuthFormContainer";
 import { Button } from "../../components/Button";
 import { Checkbox } from "../../components/Checkbox";
@@ -11,11 +12,29 @@ import { Link } from "../../components/Link";
 import { Providers } from "../../components/Providers";
 import { TextDivider } from "../../components/TextDivider";
 import Typography from "../../components/Typography";
+import { useAuth } from "../../hooks/useAuth";
 import { AuthLayout } from "../../layouts/Auth";
 import banner from "./banner-login.png";
 import styles from "./login.module.css";
 
 export const Login = () => {
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
+  const onSubmit = (formData) => {
+    const email = formData.get("email");
+    const password = formData.get("password");
+    const response = login(email, password);
+
+    // console.info(response);
+
+    if (response.success) {
+      navigate("/");
+    } else {
+      console.error(response.error);
+    }
+  };
+
   return (
     <AuthLayout>
       <AuthFormContainer bannerSrc={banner}>
@@ -25,7 +44,7 @@ export const Login = () => {
         <Typography variant="h2" color="--offwhite">
           Boas-vindas! Faça seu login.
         </Typography>
-        <Form action="">
+        <Form action={onSubmit}>
           <Fieldset>
             <Label>E-mail</Label>
             <Input
@@ -39,7 +58,7 @@ export const Login = () => {
           <Fieldset>
             <Label>Senha</Label>
             <Input name="password" id="password" type="password" required />
-            <Checkbox label="Lembrar-me" required />
+            <Checkbox label="Lembrar-me" />
           </Fieldset>
           <Button type="submit">
             Login <IconArrowFoward />
