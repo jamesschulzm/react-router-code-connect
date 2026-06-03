@@ -5,18 +5,18 @@ import { Spinner } from "../Spinner";
 
 export const ProtectedRoute = ({ children }) => {
   // Verificar se o usuário está autenticado
-  const { isAuthenticate, isLoading } = useAuth();
+  const { isAuthenticated, isLoading } = useAuth();
 
   // Hook para navegação
   const navigate = useNavigate();
 
   // Redirecionar para a página de login se o usuário não estiver autenticado
   useEffect(() => {
-    if (!isLoading && !isAuthenticate) {
+    if (!isLoading && !isAuthenticated) {
       // redirect para /auth/login
       navigate("/auth/login");
     }
-  }, [isAuthenticate, isLoading, navigate]);
+  }, [isAuthenticated, isLoading, navigate]);
 
   // Exibir um spinner enquanto a autenticação está sendo verificada
   if (isLoading) {
@@ -24,7 +24,7 @@ export const ProtectedRoute = ({ children }) => {
   }
 
   // Se o usuário não estiver autenticado, redirecionar para a página de login
-  if (!isAuthenticate) {
+  if (!isAuthenticated) {
     return null;
   }
 
