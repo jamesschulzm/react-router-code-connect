@@ -6,6 +6,7 @@ import { BlogPost } from "../pages/BlogPost/index.jsx";
 import { Feed } from "../pages/Feed/index.jsx";
 import { Login } from "../pages/Login/index.jsx";
 import { Logout } from "../pages/Logout/index.jsx";
+import { NotFound } from "../pages/NotFound/index.jsx";
 import { Register } from "../pages/Register/index.jsx";
 
 export const AppRouter = () => {
@@ -36,6 +37,8 @@ export const AppRouter = () => {
               </ProtectedRoute>
             }
           />
+
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,5 +1,6 @@
+import { useEffect } from "react";
 import ReactMarkdown from "react-markdown";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { Author } from "../../components/Author";
 import { ThumbsUpButton } from "../../components/CardPost/ThumbsUpButton";
 import { CommentList } from "../../components/CommentList";
@@ -12,7 +13,19 @@ import styles from "./blogpost.module.css";
 export const BlogPost = () => {
   const { slug } = useParams();
 
+  const navigate = useNavigate();
+
   const post = posts.find((post) => post.slug === slug);
+
+  useEffect(() => {
+    if (!post) {
+      navigate("/not-found");
+    }
+  }, [navigate, post]);
+
+  if (!post) {
+    return null;
+  }
 
   return (
     <main className={styles.main}>
