@@ -12,7 +12,7 @@
   font-size: 22px;
   line-height: 150%;
   margin: 0;
-    color: var(--typography-color);
+  color: var(--typography-color);
 }
 
 .h3 {
@@ -59,4 +59,4 @@
 .bold {
   font-weight: 700;
   color: var(--typography-color);
-} 
+}
