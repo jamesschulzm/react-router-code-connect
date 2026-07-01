@@ -4,8 +4,7 @@ import { useNavigate, useParams } from "react-router";
 import { Author } from "../../components/Author";
 import { ThumbsUpButton } from "../../components/CardPost/ThumbsUpButton";
 import { CommentList } from "../../components/CommentList";
-import { IconButton } from "../../components/IconButton";
-import { IconChat } from "../../components/icons/IconChat";
+import { ModalComment } from "../../components/ModalComment";
 import Typography from "../../components/Typography";
 import { posts } from "../Feed/data";
 import styles from "./blogpost.module.css";
@@ -15,7 +14,7 @@ export const BlogPost = () => {
 
   const navigate = useNavigate();
 
-  const post = posts.find((post) => post.slug === slug);
+  const post = posts.find((p) => p.slug == slug);
 
   useEffect(() => {
     if (!post) {
@@ -49,9 +48,7 @@ export const BlogPost = () => {
               <p>{post.likes}</p>
             </div>
             <div className={styles.action}>
-              <IconButton>
-                <IconChat />
-              </IconButton>
+              <ModalComment />
               <p>{post.comments.length}</p>
             </div>
           </div>

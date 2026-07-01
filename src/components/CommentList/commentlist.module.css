@@ -19,7 +19,7 @@
   border-bottom: 1px solid black;
 }
 
-.comments h2 {
+.heading {
   color: var(--dark-gray);
   font-size: 22px;
   font-style: normal;

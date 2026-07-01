@@ -1,8 +1,8 @@
+import styles from "./cardpost.module.css";
+
 import { Link } from "react-router";
 import { Author } from "../Author";
-import { IconButton } from "../IconButton";
-import { IconChat } from "../icons/IconChat";
-import styles from "./cardpost.module.css";
+import { ModalComment } from "../ModalComment";
 import { ThumbsUpButton } from "./ThumbsUpButton";
 
 export const CardPost = ({ post }) => {
@@ -25,9 +25,7 @@ export const CardPost = ({ post }) => {
             <p>{post.likes}</p>
           </div>
           <div className={styles.action}>
-            <IconButton>
-              <IconChat />
-            </IconButton>
+            <ModalComment />
             <p>{post.comments.length}</p>
           </div>
         </div>

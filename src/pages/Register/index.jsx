@@ -68,7 +68,7 @@ export const Register = () => {
         </Fieldset>
 
         <Button type="submit">
-          Cadastrar <IconArrowFoward />
+          Cadastrar-se <IconArrowFoward />
         </Button>
       </Form>
 
